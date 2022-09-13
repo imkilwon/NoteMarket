@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   if (kIsWeb) {
     //웹으로 접속하였을 때 웹의 정보를 전달하는 용도
     await Firebase.initializeApp(
@@ -15,7 +16,6 @@ void main() async {
             appId: "1:61803631515:web:05e6fc1bdac0d39549073e",
             measurementId: "G-5QXT06ETLN"));
   }else{
-    WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp();
   }
   runApp(const NoteMarket());
@@ -26,6 +26,8 @@ class NoteMarket extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp();
+    return MaterialApp(
+      home: Text("hi"),
+    );
   }
 }

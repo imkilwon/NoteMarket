@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>61803631515-89doq1rmdqsv35qkrmfuv9o4lubhp8kj.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.61803631515-89doq1rmdqsv35qkrmfuv9o4lubhp8kj</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBPED5og54NhQjl8Z01V2C5W4tEMlmHVW0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>61803631515</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.noteMarket</string>
+	<key>PROJECT_ID</key>
+	<string>notemarket-bac09</string>
+	<key>STORAGE_BUCKET</key>
+	<string>notemarket-bac09.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:61803631515:ios:fdacadb6ae6f7cc149073e</string>
+</dict>
+</plist>
