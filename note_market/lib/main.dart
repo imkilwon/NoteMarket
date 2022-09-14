@@ -1,6 +1,8 @@
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:note_market/screens/sign_in_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,7 +17,7 @@ void main() async {
             messagingSenderId: "61803631515",
             appId: "1:61803631515:web:05e6fc1bdac0d39549073e",
             measurementId: "G-5QXT06ETLN"));
-  }else{
+  }else {
     await Firebase.initializeApp();
   }
   runApp(const NoteMarket());
@@ -27,7 +29,7 @@ class NoteMarket extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Text("hi"),
+      home: SignInScreen(),
     );
   }
 }
