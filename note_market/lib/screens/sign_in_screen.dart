@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/instance_manager.dart';
+import 'package:note_market/screens/sign_up_screen.dart';
 import 'package:note_market/utils/utils.dart';
 import 'package:note_market/widgets/text_field_widget.dart';
+import 'package:get/get.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -24,7 +27,6 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget build(BuildContext context) {
     Size screenSize = Utils().getScreenSize();
     return Scaffold(
-      backgroundColor: Color(0xffebecee),
       appBar: AppBar(
         title: Text(
           "로그인",
@@ -115,7 +117,16 @@ class _SignInScreenState extends State<SignInScreen> {
               ),
               Text("비밀번호 재설정"),
               Text("|"),
-              Text("이메일 회원가입"),
+              GestureDetector(
+                onTap: (){
+                  Get.to(()=>SignUpScreen());
+                },
+                child: Container(
+                  child: Text(
+                    "이메일 회원가입",
+                  ),
+                ),
+              ),
               SizedBox(
                 width: 10,
               ),
