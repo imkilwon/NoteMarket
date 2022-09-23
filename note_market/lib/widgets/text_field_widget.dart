@@ -32,6 +32,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
       width: widget.width,
       height: widget.height,
       child: TextField(
+        controller: widget.controller,
         decoration: InputDecoration(
           labelText: widget.label,
           hintText: widget.hintText,

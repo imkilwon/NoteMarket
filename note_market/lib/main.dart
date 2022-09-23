@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
 import 'package:get/route_manager.dart';
 import 'package:note_market/layout/screen_layout.dart';
+import 'package:note_market/screens/account_screen.dart';
 import 'package:note_market/screens/sign_in_screen.dart';
 import 'package:note_market/screens/sign_up_screen.dart';
 
@@ -33,7 +34,7 @@ class NoteMarket extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      home: ScreenLayout(),
+      home: SignUpScreen(),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
+import 'package:note_market/resources/authentication_method.dart';
 import 'package:note_market/screens/sign_up_screen.dart';
 import 'package:note_market/utils/utils.dart';
 import 'package:note_market/widgets/text_field_widget.dart';
@@ -15,6 +16,8 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  AuthenticationMethods authenticationMethods = AuthenticationMethods();
+
 
   @override
   void dispose() {
@@ -100,9 +103,14 @@ class _SignInScreenState extends State<SignInScreen> {
               alignment: Alignment.center,
               width: screenSize.width * 0.9,
               height: screenSize.height * 0.07,
-              child: Text(
-                "로그인",
-                style: TextStyle(color: Colors.white, fontSize: 20),
+              child: GestureDetector(
+                onTap: () async{
+
+                },
+                child: Text(
+                  "로그인",
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
               ),
             ),
           ),
