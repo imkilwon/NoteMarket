@@ -18,7 +18,6 @@ class _SignInScreenState extends State<SignInScreen> {
   TextEditingController passwordController = TextEditingController();
   AuthenticationMethods authenticationMethods = AuthenticationMethods();
 
-
   @override
   void dispose() {
     super.dispose();
@@ -76,7 +75,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           label: "비밀번호",
                           width: screenSize.width * 0.85,
                           height: screenSize.height * 0.06,
-                          controller: emailController,
+                          controller: passwordController,
                           obscureText: true,
                           hintText: "비밀번호를 입력해주세요"),
                     ),
@@ -104,8 +103,16 @@ class _SignInScreenState extends State<SignInScreen> {
               width: screenSize.width * 0.9,
               height: screenSize.height * 0.07,
               child: GestureDetector(
-                onTap: () async{
-
+                onTap: () async {
+                  String output = await authenticationMethods.signInUser(
+                      email: emailController.text,
+                      password: passwordController.text);
+                  if(output == "success"){
+                    //기능
+                  }
+                  else{
+                    Utils().showSnackBar(context: context, content: output);
+                  }
                 },
                 child: Text(
                   "로그인",
@@ -126,8 +133,8 @@ class _SignInScreenState extends State<SignInScreen> {
               Text("비밀번호 재설정"),
               Text("|"),
               GestureDetector(
-                onTap: (){
-                  Get.to(()=>SignUpScreen());
+                onTap: () {
+                  Get.to(() => SignUpScreen());
                 },
                 child: Container(
                   child: Text(

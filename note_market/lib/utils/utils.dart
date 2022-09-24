@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Utils {
   Size getScreenSize() {
@@ -7,13 +8,24 @@ class Utils {
 
   showSnackBar({required BuildContext context, required String content}) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Center(child: Text(content)),
-      backgroundColor: Colors.orange,
+      //snackBar를 이용하기 위해서는 ScaffoldMessenger의 showSnackBar를 이용해야 한다.
+      content: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Flexible(child: Text(content,overflow: TextOverflow.ellipsis,maxLines: 1,)),
+        ],
+      ),
+      duration: Duration(milliseconds: 1000),
+      //스낵바의 지속 시간
+      behavior: SnackBarBehavior.floating,
+      //스낵바의 형태 ( fixed = 화면의 하단부와 연결되어 있는 형태, floating은 화면의 하단부 위에 떠 있는 형태)
+      backgroundColor: Colors.lightBlueAccent,
+      //스낵바의 배경색
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(10),
-            topRight: Radius.circular(10),
-          )),
+        //스낵바의 형태
+        borderRadius: BorderRadius.circular(10.0),
+        //스낵바의 4면을 둥글게 만듦
+      ),
     ));
   }
 }

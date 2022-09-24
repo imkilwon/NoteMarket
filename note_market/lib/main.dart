@@ -1,4 +1,4 @@
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +22,7 @@ void main() async {
             messagingSenderId: "61803631515",
             appId: "1:61803631515:web:05e6fc1bdac0d39549073e",
             measurementId: "G-5QXT06ETLN"));
-  }else {
+  } else {
     await Firebase.initializeApp();
   }
   runApp(const NoteMarket());
@@ -33,8 +33,25 @@ class NoteMarket extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      home: SignUpScreen(),
+    return MaterialApp(
+      home: StreamBuilder(
+            stream: FirebaseAuth.instance.authStateChanges(),
+            builder: (context, AsyncSnapshot<User?> user) {
+              if (user.connectionState == ConnectionState.waiting) {
+                //user의 연결상태가 웨이팅이라면
+                return const Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.lightBlueAccent,
+                    ),
+                );
+              } else if(user.hasData){
+                FirebaseAuth.instance.signOut();
+                return AccountScreen();
+              }else{
+                return const SignInScreen();
+              }
+            }
+      ),
     );
   }
 }

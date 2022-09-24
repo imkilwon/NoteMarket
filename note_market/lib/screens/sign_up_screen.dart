@@ -109,7 +109,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         if(output == "success"){
                           print("다음 단계로 이동하세요.");
                         }else{
-                          print(output);
+                          Utils().showSnackBar(context: context, content: output);
                         }
 
                       },
