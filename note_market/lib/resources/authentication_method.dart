@@ -11,6 +11,7 @@ class AuthenticationMethods{
     if ( email != "" && password != ""){
       try{
         await firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
+        output = "success";
         //아이디랑 비밀번호 만들기 시도
       } on FirebaseAuthException catch(e){
         output = e.message.toString();
@@ -31,6 +32,7 @@ class AuthenticationMethods{
     if ( email != "" && password != ""){
       try{
         await firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
+        output = "success";
         //아이디랑 비밀번호로 로그인하기
       } on FirebaseAuthException catch(e){
         output = e.message.toString();

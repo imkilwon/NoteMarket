@@ -34,19 +34,22 @@ class _ScreenLayoutState extends State<ScreenLayout> {
           children: screens,
           controller: pageController,
         ),
-        bottomNavigationBar: Container(
-          decoration: BoxDecoration(border: Border(top: BorderSide(color: Colors.grey[300]!,width:1))),
-          child: TabBar(
-            indicator: BoxDecoration(border:Border(top: BorderSide(color: Colors.lightBlueAccent,width: 4),),),
-            onTap: changePage,
-            indicatorSize: TabBarIndicatorSize.label,
-            tabs: [
-              Tab(child: Icon(Icons.home_outlined, color: currentPage==0? Colors.lightBlueAccent : Colors.black),),
-              Tab(child: Icon(Icons.account_circle_outlined,color: currentPage==1? Colors.lightBlueAccent : Colors.black),),
-              Tab(child: Icon(Icons.shopping_cart_outlined,color: currentPage==2? Colors.lightBlueAccent : Colors.black),),
-              Tab(child: Icon(Icons.menu,color: currentPage==3? Colors.lightBlueAccent: Colors.black),),
+        bottomNavigationBar: Padding(
+          padding: const EdgeInsets.only(bottom: 18.0),
+          child: Container(
+            decoration: BoxDecoration(border: Border(top: BorderSide(color: Colors.grey[300]!,width:1))),
+            child: TabBar(
+              indicator: BoxDecoration(border:Border(top: BorderSide(color: Colors.lightBlueAccent,width: 4),),),
+              onTap: changePage,
+              indicatorSize: TabBarIndicatorSize.label,
+              tabs: [
+                Tab(child: Icon(Icons.home_outlined, color: currentPage==0? Colors.lightBlueAccent : Colors.black),),
+                Tab(child: Icon(Icons.book,color: currentPage==1? Colors.lightBlueAccent : Colors.black),),
+                Tab(child: Icon(Icons.account_circle_outlined,color: currentPage==2? Colors.lightBlueAccent : Colors.black),),
+                Tab(child: Icon(Icons.menu,color: currentPage==3? Colors.lightBlueAccent: Colors.black),),
 
-            ],
+              ],
+            ),
           ),
         ),
       ),

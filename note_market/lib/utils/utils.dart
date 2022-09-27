@@ -6,6 +6,14 @@ class Utils {
     return MediaQueryData.fromWindow(WidgetsBinding.instance.window).size;
   }
 
+  Widget divider(){
+    return Container(
+      height: 1.0,
+      width: 500.0,
+      color: Colors.grey[200],
+    );
+  }
+
   showSnackBar({required BuildContext context, required String content}) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       //snackBar를 이용하기 위해서는 ScaffoldMessenger의 showSnackBar를 이용해야 한다.

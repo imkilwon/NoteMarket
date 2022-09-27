@@ -5,9 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
 import 'package:get/route_manager.dart';
 import 'package:note_market/layout/screen_layout.dart';
-import 'package:note_market/screens/account_screen.dart';
+import 'package:note_market/screens/main_login_screen.dart';
 import 'package:note_market/screens/sign_in_screen.dart';
 import 'package:note_market/screens/sign_up_screen.dart';
+import 'package:note_market/utils/utils.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,7 +34,7 @@ class NoteMarket extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       home: StreamBuilder(
             stream: FirebaseAuth.instance.authStateChanges(),
             builder: (context, AsyncSnapshot<User?> user) {
@@ -45,10 +46,10 @@ class NoteMarket extends StatelessWidget {
                     ),
                 );
               } else if(user.hasData){
-                FirebaseAuth.instance.signOut();
-                return AccountScreen();
+                //로그인 되었을 때,
+                return const ScreenLayout();
               }else{
-                return const SignInScreen();
+                return const ScreenLayout();
               }
             }
       ),

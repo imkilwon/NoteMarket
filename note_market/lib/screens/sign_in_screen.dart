@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
+import 'package:note_market/layout/screen_layout.dart';
 import 'package:note_market/resources/authentication_method.dart';
 import 'package:note_market/screens/sign_up_screen.dart';
 import 'package:note_market/utils/utils.dart';
@@ -30,6 +31,16 @@ class _SignInScreenState extends State<SignInScreen> {
     Size screenSize = Utils().getScreenSize();
     return Scaffold(
       appBar: AppBar(
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 15.0),
+          child: IconButton(
+            onPressed: (){
+              Get.back();
+            },
+            icon: Icon(Icons.arrow_back_ios),
+            color: Colors.black,
+          ),
+        ),
         title: Text(
           "로그인",
           style: TextStyle(color: Colors.black),
@@ -49,10 +60,6 @@ class _SignInScreenState extends State<SignInScreen> {
                 height: screenSize.height * 0.15,
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  border: Border.all(
-                    color: Colors.blue.withOpacity(0.3),
-                    width: 1,
-                  ),
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -94,26 +101,26 @@ class _SignInScreenState extends State<SignInScreen> {
             onTap: () {
               //로그인 기능 집어넣기
             },
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5.0),
-                color: Colors.lightBlueAccent.withOpacity(0.7),
-              ),
-              alignment: Alignment.center,
-              width: screenSize.width * 0.9,
-              height: screenSize.height * 0.07,
-              child: GestureDetector(
-                onTap: () async {
-                  String output = await authenticationMethods.signInUser(
-                      email: emailController.text,
-                      password: passwordController.text);
-                  if(output == "success"){
-                    //기능
-                  }
-                  else{
-                    Utils().showSnackBar(context: context, content: output);
-                  }
-                },
+            child: GestureDetector(
+              onTap: () async {
+                String output = await authenticationMethods.signInUser(
+                    email: emailController.text,
+                    password: passwordController.text);
+                if(output == "success"){
+                  Get.offAll(()=>ScreenLayout());
+                }
+                else{
+                  Utils().showSnackBar(context: context, content: output);
+                }
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5.0),
+                  color: Colors.lightBlueAccent.withOpacity(0.7),
+                ),
+                alignment: Alignment.center,
+                width: screenSize.width * 0.9,
+                height: screenSize.height * 0.07,
                 child: Text(
                   "로그인",
                   style: TextStyle(color: Colors.white, fontSize: 20),
@@ -137,8 +144,13 @@ class _SignInScreenState extends State<SignInScreen> {
                   Get.to(() => SignUpScreen());
                 },
                 child: Container(
-                  child: Text(
-                    "이메일 회원가입",
+                  child: GestureDetector(
+                    onTap: (){
+                      Get.to(()=>const SignUpScreen());
+                    },
+                    child: Text(
+                      "이메일 회원가입",
+                    ),
                   ),
                 ),
               ),

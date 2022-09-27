@@ -1,153 +1,122 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:note_market/utils/constants.dart';
 import 'package:note_market/utils/utils.dart';
+import 'package:note_market/widgets/login_state_widget.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    double buttonSize = 50;
-    Size screenSize = Utils().getScreenSize();
-    return Scaffold(
-      body: Column(
-        children: [
-          //닫기 , 로고 , 카톡 시작, 페북 시작 , 구글 로그인, 이메일로 회원가입 , 이미 가입 하셨나요?
-          Container(
-            alignment: Alignment.bottomRight,
-            width: double.infinity,
-            height: screenSize.height / 10,
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(0, 0, 18, 10),
-              child: GestureDetector(
-                onTap: (){},
-                child: Text("닫기",style: TextStyle(
-                  fontSize: 19,
-                  fontWeight: FontWeight.w100,
-                ),),
-              ),
-            ),
-          ),
-          Container(
-            alignment: Alignment.center,
-            width: double.infinity,
-            height: screenSize.height / 2,
-            child: Text("로고"),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-
-          Flexible(
-            flex: 5,
-            child: GestureDetector(
-              onTap: (){},
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Colors.yellow,
-                ),
-                alignment: Alignment.center,
-                width: screenSize.width * 0.8,
-                height: buttonSize,
-                child: Text("카카오톡으로 시작하기"),
-              ),
-            ),
-          ),
-          Flexible(
-              flex: 1,
-              child: SizedBox(
-                height: 150,
-              )),
-          Flexible(
-            flex: 5,
-            child: GestureDetector(
-                onTap: (){},
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Colors.blue,
-                ),
-                alignment: Alignment.center,
-
-                width: screenSize.width * 0.8,
-                height: buttonSize,
-                child: Text("페이스북으로 시작하기"),
-              ),
-            ),
-          ),
-          Flexible(
-              flex: 1,
-              child: SizedBox(
-                height: 150,
-              )),
-          Flexible(
-            flex: 5,
-            child: GestureDetector(
-              onTap: (){},
-              child: Container(decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: Colors.white,
-                border: Border.all(
-                  color: Colors.lightBlueAccent,
-                )
-              ),
-                alignment: Alignment.center,
-
-                width: screenSize.width * 0.8,
-                height: buttonSize,
-                child: Text("구글로 시작하기"),
-              ),
-            ),
-          ),
-          Flexible(
-              flex: 1,
-              child: SizedBox(
-                height: 150,
-              )),
-          Flexible(
-            flex: 5,
-            child: GestureDetector(
-              onTap: (){},
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Colors.white,
-                  border: Border.all(
-                    color: Colors.grey,
-                  )
-                ),
-                alignment: Alignment.center,
-                width: screenSize.width * 0.8,
-                height: buttonSize,
-                child: Text("이메일로 시작하기"),
-              ),
-            ),
-          ),
-          Flexible(
-              flex: 1,
-              child: SizedBox(
-                height: 150,
-              )),
-
-          Flexible(
-            flex: 3,
-            child: Container(
-                alignment: Alignment.center,
-                width: screenSize.width * 0.8,
-                height: buttonSize,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("이미 가입하셨나요?  ", style: TextStyle(color: Colors.grey)),
-                    GestureDetector(
-                      onTap: (){},
-                      child: Text(
-                        "로그인",
-                        style: TextStyle(fontWeight: FontWeight.w500),
+    return SafeArea(
+      child: Scaffold(
+        appBar: LoginStateWidget(),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 7.0, bottom: 20.0),
+                child: Container(
+                  width: Utils().getScreenSize().width*0.9,
+                  height: Utils().getScreenSize().height*0.07,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    border: Border.all(
+                      color: Colors.grey,
+                      width: 1,
+                    )
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        //노트 페이 잔액
+                        children: [
+                          Text("노트 페이 잔액",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+                          Text("얼마 있는데?",style: TextStyle(fontSize: 15,color: Colors.lightBlue),),
+                        ],
                       ),
-                    ),
-                  ],
-                )),
+                      Container(
+                        width: 1,
+                        height: Utils().getScreenSize().height*0.04,
+                        color: Colors.grey,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        //쿠폰
+                        children: [
+                          Text("쿠폰",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+                          Text("몇 개 있는데?",style: TextStyle(fontSize: 15,color: Colors.lightBlue),),
+                        ],
+                      ),
+                      Container(
+                        width: 1,
+                        height: Utils().getScreenSize().height*0.04,
+                        color: Colors.grey,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        //리뷰 작성
+                        children: [
+                          Text("리뷰",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+                          Text("왜 안 썼는데?",style: TextStyle(fontSize: 15,color: Colors.lightBlue),),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              Utils().divider(),
+              _Menu(menuName: "구매한 노트"),
+              Utils().divider(),
+              _Menu(menuName: "판매중인 노트"),
+              Utils().divider(),
+              _Menu(menuName: "찜한 노트"),
+              Utils().divider(),
+              _Menu(menuName: "최근 본 노트"),
+              Utils().divider(),
+              _Menu(menuName: "선물함"),
+              Utils().divider(),
+              _Menu(menuName: "관심 노터"),
+              Utils().divider(),
+              _Menu(menuName: "고객센터 문의 내역"),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+class _Menu extends StatelessWidget {
+  final String menuName;
+  const _Menu({Key? key , required this.menuName}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: appBarHeight,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Text(
+              "${menuName}",
+              style: TextStyle(
+                fontSize: 17,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child:rightArrow,
           ),
         ],
       ),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
 import 'package:get/route_manager.dart';
 import 'package:note_market/resources/authentication_method.dart';
+import 'package:note_market/screens/sign_in_screen.dart';
 import 'package:note_market/utils/utils.dart';
 import 'package:note_market/widgets/text_field_widget.dart';
 
@@ -107,7 +108,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             email: emailController.text,
                             password: passwordController.text);
                         if(output == "success"){
-                          print("다음 단계로 이동하세요.");
+                          Get.off(()=>SignInScreen());
                         }else{
                           Utils().showSnackBar(context: context, content: output);
                         }

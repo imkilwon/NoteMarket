@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:note_market/screens/account_screen.dart';
+import 'package:note_market/screens/book_shelf_screen.dart';
 import 'package:note_market/screens/home_screen.dart';
+import 'package:note_market/screens/more_screen.dart';
+
+const double appBarHeight =60;
+
+Widget rightArrow = const Icon(Icons.keyboard_arrow_right_rounded);
+
 List<Widget> screens = [
-  Center(child: HomeScreen()),
-  Center(child: Text("Account Screen")),
-  Center(child: Text("Cart Screen")),
-  Center(child: Text("More Screen")),
+  const Center(child: HomeScreen()),
+  const Center(child: BookShelfScreen()),
+  const Center(child: AccountScreen()),
+  const Center(child: MoreScreen()),
 ];
 
 //url 테스트용
