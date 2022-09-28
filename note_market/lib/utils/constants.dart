@@ -4,9 +4,10 @@ import 'package:note_market/screens/book_shelf_screen.dart';
 import 'package:note_market/screens/home_screen.dart';
 import 'package:note_market/screens/more_screen.dart';
 
-const double appBarHeight =60;
+const double appBarHeight =45;
 
 Widget rightArrow = const Icon(Icons.keyboard_arrow_right_rounded);
+Widget backButton = const Icon(Icons.arrow_back_ios ,color: Colors.black,);
 
 List<Widget> screens = [
   const Center(child: HomeScreen()),

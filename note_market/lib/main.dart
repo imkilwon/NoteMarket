@@ -2,13 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:get/instance_manager.dart';
 import 'package:get/route_manager.dart';
 import 'package:note_market/layout/screen_layout.dart';
-import 'package:note_market/screens/main_login_screen.dart';
-import 'package:note_market/screens/sign_in_screen.dart';
-import 'package:note_market/screens/sign_up_screen.dart';
-import 'package:note_market/utils/utils.dart';
+import 'package:note_market/screens/note_selling_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -45,11 +41,8 @@ class NoteMarket extends StatelessWidget {
                       color: Colors.lightBlueAccent,
                     ),
                 );
-              } else if(user.hasData){
-                //로그인 되었을 때,
-                return const ScreenLayout();
               }else{
-                return const ScreenLayout();
+                return const NoteSellingScreen();
               }
             }
       ),
