@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
 import 'package:note_market/screens/account_screen.dart';
 import 'package:note_market/screens/book_shelf_screen.dart';
 import 'package:note_market/screens/home_screen.dart';
@@ -7,7 +8,7 @@ import 'package:note_market/screens/more_screen.dart';
 const double appBarHeight =45;
 
 Widget rightArrow = const Icon(Icons.keyboard_arrow_right_rounded);
-Widget backButton = const Icon(Icons.arrow_back_ios ,color: Colors.black,);
+Widget backButton = GestureDetector(onTap: (){Get.back();},child : Icon(Icons.arrow_back_ios ,color: Colors.black,));
 
 List<Widget> screens = [
   const Center(child: HomeScreen()),

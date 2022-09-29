@@ -42,7 +42,7 @@ class NoteMarket extends StatelessWidget {
                     ),
                 );
               }else{
-                return const NoteSellingScreen();
+                return const ScreenLayout();
               }
             }
       ),

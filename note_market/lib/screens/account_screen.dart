@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
+import 'package:note_market/screens/dibs_screen.dart';
 import 'package:note_market/utils/constants.dart';
 import 'package:note_market/utils/utils.dart';
 import 'package:note_market/widgets/login_state_widget.dart';
@@ -18,15 +20,14 @@ class AccountScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 7.0, bottom: 20.0),
                 child: Container(
-                  width: Utils().getScreenSize().width*0.9,
-                  height: Utils().getScreenSize().height*0.07,
+                  width: Utils().getScreenSize().width * 0.9,
+                  height: Utils().getScreenSize().height * 0.07,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(
-                      color: Colors.grey,
-                      width: 1,
-                    )
-                  ),
+                      borderRadius: BorderRadius.circular(5),
+                      border: Border.all(
+                        color: Colors.grey,
+                        width: 1,
+                      )),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -34,47 +35,75 @@ class AccountScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         //노트 페이 잔액
                         children: [
-                          Text("노트 페이 잔액",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
-                          Text("얼마 있는데?",style: TextStyle(fontSize: 15,color: Colors.lightBlue),),
+                          Text(
+                            "노트 페이 잔액",
+                            style: TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            "얼마 있는데?",
+                            style: TextStyle(
+                                fontSize: 15, color: Colors.lightBlue),
+                          ),
                         ],
                       ),
                       Container(
                         width: 1,
-                        height: Utils().getScreenSize().height*0.04,
+                        height: Utils().getScreenSize().height * 0.04,
                         color: Colors.grey,
                       ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         //쿠폰
                         children: [
-                          Text("쿠폰",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
-                          Text("몇 개 있는데?",style: TextStyle(fontSize: 15,color: Colors.lightBlue),),
+                          Text(
+                            "쿠폰",
+                            style: TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            "몇 개 있는데?",
+                            style: TextStyle(
+                                fontSize: 15, color: Colors.lightBlue),
+                          ),
                         ],
                       ),
                       Container(
                         width: 1,
-                        height: Utils().getScreenSize().height*0.04,
+                        height: Utils().getScreenSize().height * 0.04,
                         color: Colors.grey,
                       ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         //리뷰 작성
                         children: [
-                          Text("리뷰",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
-                          Text("왜 안 썼는데?",style: TextStyle(fontSize: 15,color: Colors.lightBlue),),
+                          Text(
+                            "리뷰",
+                            style: TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            "왜 안 썼는데?",
+                            style: TextStyle(
+                                fontSize: 15, color: Colors.lightBlue),
+                          ),
                         ],
                       ),
                     ],
                   ),
                 ),
               ),
-
               Utils().divider(),
               _Menu(menuName: "구매한 노트"),
               Utils().divider(),
               _Menu(menuName: "판매중인 노트"),
               Utils().divider(),
-              _Menu(menuName: "찜한 노트"),
+              GestureDetector(
+                onTap: (){
+                  Get.to(()=>DibsScreen());
+                },
+                child: _Menu(menuName: "찜한 노트"),
+              ),
               Utils().divider(),
               _Menu(menuName: "최근 본 노트"),
               Utils().divider(),
@@ -91,10 +120,10 @@ class AccountScreen extends StatelessWidget {
   }
 }
 
-
 class _Menu extends StatelessWidget {
   final String menuName;
-  const _Menu({Key? key , required this.menuName}) : super(key: key);
+
+  const _Menu({Key? key, required this.menuName}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +145,7 @@ class _Menu extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(15.0),
-            child:rightArrow,
+            child: rightArrow,
           ),
         ],
       ),

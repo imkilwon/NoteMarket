@@ -82,17 +82,35 @@ class _NoteSellingScreenState extends State<NoteSellingScreen> {
                 ),
               ),
             ),
-
+            Utils().divider(),
             //글 제목
             Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: TextFieldWidget(label: "노트 이름", width: screenSize.width * 0.95, height: appBarHeight, controller: nameController, obscureText: false, hintText:"20자 이내로 입력해 주세요."),
+              padding : EdgeInsets.only(top:10, bottom: 5),
+              child: TextFieldWidget(label: "노트 이름", width: screenSize.width * 0.97, height: 55, controller: nameController, obscureText: false, hintText:"20자 이내로 입력해 주세요."),
             ),
 
             //가격
             Padding(
               padding: const EdgeInsets.all(5.0),
-              child: TextFieldWidget(label: "가격", width: screenSize.width * 0.95, height: appBarHeight, controller: priceController, obscureText: false, hintText:"숫자만 입력해주세요."),
+              child: TextField(
+                controller: priceController,
+                keyboardType: TextInputType.number,
+                maxLines: 1,
+                decoration: InputDecoration(
+                  labelText: "가격",
+                  hintText: "숫자만 입력해주세요",
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                    borderSide: BorderSide(color: Colors.lightBlueAccent),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                    borderSide: BorderSide(color: Colors.black.withOpacity(0.1)),
+                  ),
+                ),
+
+
+              ),
             ),
 
             //내용
