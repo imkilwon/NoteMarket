@@ -1,18 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:note_market/utils/constants.dart';
 import 'package:note_market/utils/utils.dart';
 import 'package:note_market/widgets/text_field_widget.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
-class NoteSellingScreen extends StatefulWidget {
-  const NoteSellingScreen({Key? key}) : super(key: key);
+class NoteSellScreen extends StatefulWidget {
+  const NoteSellScreen({Key? key}) : super(key: key);
 
   @override
-  State<NoteSellingScreen> createState() => _NoteSellingScreenState();
+  State<NoteSellScreen> createState() => _NoteSellScreenState();
 }
 
-class _NoteSellingScreenState extends State<NoteSellingScreen> {
+class _NoteSellScreenState extends State<NoteSellScreen> {
 
   final nameController = TextEditingController();
   final priceController = TextEditingController();
@@ -59,7 +61,24 @@ class _NoteSellingScreenState extends State<NoteSellingScreen> {
               child: Align(
                 alignment: Alignment.topLeft,
                 child: GestureDetector(
-                  onTap: (){},
+                  onTap: () async{
+                    final results = await FilePicker.platform.pickFiles(
+                      allowMultiple: false,
+                      type: FileType.custom,
+                      allowedExtensions:  ['png','jpg'],
+                    );
+                    if(results == null){
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text("No file Selected"))
+                      );
+                      return null;
+                    }
+                    final path = results.files.single.path!;
+                    final fileName = results.files.single.name;
+
+                    print(path);
+                    print(fileName);
+                  },
                   child: Container(
                     width: 80,
                     height: 80,

@@ -4,7 +4,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:note_market/layout/screen_layout.dart';
-import 'package:note_market/screens/note_selling_screen.dart';
+import 'package:note_market/screens/note_product_screen.dart';
+import 'package:note_market/screens/note_sell_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -42,7 +43,7 @@ class NoteMarket extends StatelessWidget {
                     ),
                 );
               }else{
-                return const ScreenLayout();
+                return const NoteSellScreen();
               }
             }
       ),

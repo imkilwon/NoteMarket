@@ -129,7 +129,7 @@ class _Menu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: appBarHeight,
+      height: appBarHeight+10,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

@@ -31,6 +31,7 @@ class _ScreenLayoutState extends State<ScreenLayout> {
       length: 4,
       child: Scaffold(
         body: PageView(
+          physics: NeverScrollableScrollPhysics(),
           children: screens,
           controller: pageController,
         ),
@@ -39,7 +40,7 @@ class _ScreenLayoutState extends State<ScreenLayout> {
           child: Container(
             decoration: BoxDecoration(border: Border(top: BorderSide(color: Colors.grey[300]!,width:1))),
             child: TabBar(
-              indicator: BoxDecoration(border:Border(top: BorderSide(color: Colors.lightBlueAccent,width: 4),),),
+              indicator: BoxDecoration(border:Border(top: BorderSide(color: Colors.lightBlueAccent,width: 3),),),
               onTap: changePage,
               indicatorSize: TabBarIndicatorSize.label,
               tabs: [
@@ -47,7 +48,6 @@ class _ScreenLayoutState extends State<ScreenLayout> {
                 Tab(child: Icon(Icons.book,color: currentPage==1? Colors.lightBlueAccent : Colors.black),),
                 Tab(child: Icon(Icons.account_circle_outlined,color: currentPage==2? Colors.lightBlueAccent : Colors.black),),
                 Tab(child: Icon(Icons.menu,color: currentPage==3? Colors.lightBlueAccent: Colors.black),),
-
               ],
             ),
           ),
